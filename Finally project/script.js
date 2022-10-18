@@ -1,62 +1,8 @@
-function generateMatrix(matrixLeng, gr, grEat, pred,fire,water) {
-    let matrix = [];
-    for (let i = 0; i < matrixLeng; i++) {
-        matrix.push([]);
-        for (let j = 0; j < matrixLeng; j++) {
-            matrix[i].push(0)
-        }
+var socket = io()
 
-    }
-
-    for (let i = 0; i < gr; i++) {
-        let x = Math.floor(Math.random() * matrixLeng)
-        let y = Math.floor(Math.random() * matrixLeng)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 1
-        }
-    }
-
-    for (let i = 0; i < grEat; i++) {
-        let x = Math.floor(Math.random() * matrixLeng)
-        let y = Math.floor(Math.random() * matrixLeng)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 2
-        }
-    }
-
-    for (let i = 0; i < pred; i++) {
-        let x = Math.floor(Math.random() * matrixLeng)
-        let y = Math.floor(Math.random() * matrixLeng)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 3
-        }
-    }
-
-    for (let i = 0; i < fire; i++) {
-        let x = Math.floor(Math.random() * matrixLeng)
-        let y = Math.floor(Math.random() * matrixLeng)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 4
-        }
-    }
-
-    for (let i = 0; i < water; i++) {
-        let x = Math.floor(Math.random() * matrixLeng)
-        let y = Math.floor(Math.random() * matrixLeng)
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 5
-        }
-    }
-    return matrix
-}
-
-let matrix = generateMatrix(35,35,25,32,35,40)
 var side = 30;
-let grassArr = [];
-let grassEaterArr = [];
-let predatorArr = [];
-let fireArr = [];
-let waterArr = [];
+
+
 
 function setup() {
     frameRate(5);

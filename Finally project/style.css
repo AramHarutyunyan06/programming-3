@@ -1,0 +1,14 @@
+body{
+    height: 100vh;
+    background: linear-gradient(to top,#ccc,rgb(51, 49, 49))
+}
+.header{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+.header h1{
+    color:white;
+    font-size: 58px;
+    font-family: serif;
+}
