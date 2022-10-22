@@ -27,13 +27,14 @@ module.exports = class Water extends LivingCreature{
     eat() {
 
         //Predator
-        let emptyCelss = this.chooseCell(3)
-        let newCell = random(emptyCelss)
-        if (newCell) {
+
+        let emptyCelss3 = this.chooseCell(3)
+        let newCell3 = emptyCelss3[Math.floor(Math.random() * emptyCelss3.length)]
+        if (newCell3) {
             this.energy++
-            let newX = newCell[0]
-            let newY = newCell[1]
-            matrix[newY][newX] = matrix[this.y][this.x]///////2
+            let newX = newCell3[0]
+            let newY = newCell3[1]
+            matrix[newY][newX] = matrix[this.y][this.x]
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
@@ -51,14 +52,15 @@ module.exports = class Water extends LivingCreature{
             this.move()
         }
 
-        //Predator
-        let emptyCelss = this.chooseCell(4)
-        let newCell = random(emptyCelss)
-        if (newCell) {
+        //Fire
+        
+        let emptyCelss4 = this.chooseCell(4)
+        let newCell4 = emptyCelss4[Math.floor(Math.random() * emptyCelss4.length)]
+        if (newCell4) {
             this.energy++
-            let newX = newCell[0]
-            let newY = newCell[1]
-            matrix[newY][newX] = matrix[this.y][this.x]///////2
+            let newX = newCell4[0]
+            let newY = newCell4[1]
+            matrix[newY][newX] = matrix[this.y][this.x]
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
@@ -76,12 +78,12 @@ module.exports = class Water extends LivingCreature{
         }
         //grassEater
 
-        let emptyCelss1 = this.chooseCell(2)
-        let newCell1 = random(emptyCelss1)
-        if (newCell1) {
+        let emptyCelss2 = this.chooseCell(2)
+        let newCell2 = emptyCelss2[Math.floor(Math.random() * emptyCelss2.length)]
+        if (newCell2) {
             this.energy/=2
-            let newX = newCell1[0]
-            let newY = newCell1[1]
+            let newX = newCell2[0]
+            let newY = newCell2[1]
             matrix[newY][newX] = matrix[this.y][this.x]///////2
             matrix[this.y][this.x] = 0
             this.x = newX

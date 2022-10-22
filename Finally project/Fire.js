@@ -24,7 +24,7 @@ module.exports = class Fire extends LivingCreature{
 
     mul() {
         let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random() * emptyCelss.length)]
         if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]
@@ -38,7 +38,7 @@ module.exports = class Fire extends LivingCreature{
     move() {
         this.energy--
         let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random() * emptyCelss.length)]
         if (newCell && this.energy >= 0) {
             let newX = newCell[0]
             let newY = newCell[1]
@@ -52,8 +52,11 @@ module.exports = class Fire extends LivingCreature{
     }
 
     eat() {
-        let emptyCelss = this.chooseCell(3)
-        let newCell = random(emptyCelss)
+
+        //Predator
+
+        let emptyCelss3 = this.chooseCell(3)
+        let newCell = emptyCelss3[Math.floor(Math.random() * emptyCelss3.length)]
         if (newCell) {
             this.energy++
             let newX = newCell[0]
@@ -75,14 +78,14 @@ module.exports = class Fire extends LivingCreature{
         } else {
             this.move()
         }
-        //**** 88
+        //GrassEater
 
-        let emptyCelss1 = this.chooseCell(2)
-        let newCell1 = random(emptyCelss1)
-        if (newCell1) {
+        let emptyCelss2 = this.chooseCell(2)
+        let newCell2 = emptyCelss2[Math.floor(Math.random() * emptyCelss2.length)]
+        if (newCell2) {
             this.energy++
-            let newX = newCell1[0]
-            let newY = newCell1[1]
+            let newX = newCell2[0]
+            let newY = newCell2[1]
             matrix[newY][newX] = matrix[this.y][this.x]///////2
             matrix[this.y][this.x] = 0
             this.x = newX
@@ -101,14 +104,14 @@ module.exports = class Fire extends LivingCreature{
             this.move()
         }
 
-        //$$$$$$
+        //Grass
 
-        let emptyCelss2 = this.chooseCell(1)
-        let newCell2 = random(emptyCelss2)
-        if (newCell2) {
+        let emptyCelss1 = this.chooseCell(1)
+        let newCell1 = emptyCelss1[Math.floor(Math.random() * emptyCelss1.length)]
+        if (newCell1) {
             this.energy++
-            let newX = newCell2[0]
-            let newY = newCell2[1]
+            let newX = newCell1[0]
+            let newY = newCell1[1]
             matrix[newY][newX] = matrix[this.y][this.x]///////2
             matrix[this.y][this.x] = 0
             this.x = newX
@@ -126,12 +129,6 @@ module.exports = class Fire extends LivingCreature{
         } else {
             this.move()
         }
-
-        //water
-
-        
-        
-        
     }
 
     die() {

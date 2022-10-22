@@ -24,8 +24,8 @@ module.exports = class Predator extends LivingCreature{
     }
 
     mul() {
-        let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let emptyCelss0 = this.chooseCell(0)
+        let newCell = emptyCelss0[Math.floor(Math.random() * emptyCelss0.length)]
         if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]
@@ -39,7 +39,7 @@ module.exports = class Predator extends LivingCreature{
     move() {
         this.energy--
         let emptyCelss = this.chooseCell(0)
-        let newCell = random(emptyCelss)
+        let newCell = emptyCelss[Math.floor(Math.random() * emptyCelss.length)]
         if (newCell && this.energy >= 0) {
             let newX = newCell[0]
             let newY = newCell[1]
@@ -53,12 +53,15 @@ module.exports = class Predator extends LivingCreature{
     }
 
     eat() {
-        let emptyCelss = this.chooseCell(2)
-        let newCell = random(emptyCelss)
-        if (newCell) {
+
+        //GrassEater
+
+        let emptyCelss2 = this.chooseCell(2)
+        let newCell2 = emptyCelss2[Math.floor(Math.random() * emptyCelss2.length)]
+        if (newCell2) {
             this.energy++
-            let newX = newCell[0]
-            let newY = newCell[1]
+            let newX = newCell2[0]
+            let newY = newCell2[1]
             matrix[newY][newX] = matrix[this.y][this.x]///////2
             matrix[this.y][this.x] = 0
             this.x = newX
@@ -78,12 +81,13 @@ module.exports = class Predator extends LivingCreature{
         }
 
         //Water
-        let emptyCelss1 = this.chooseCell(5)
-        let newCell1 = random(emptyCelss1)
-        if (newCell1) {
+
+        let emptyCelss5 = this.chooseCell(5)
+        let newCell5 = emptyCelss5[Math.floor(Math.random() * emptyCelss5.length)]
+        if (newCell5) {
             this.energy *= 2
-            let newX = newCell1[0]
-            let newY = newCell1[1]
+            let newX = newCell5[0]
+            let newY = newCell5[1]
             matrix[newY][newX] = matrix[this.y][this.x]
             matrix[this.y][this.x] = 0
             this.x = newX
