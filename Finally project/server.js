@@ -22,7 +22,7 @@ server.listen(3000, () => {
 
 
 
-function generateMatrix(matrixLeng, gr, grEat, pred, fire, water) {
+function generateMatrix(matrixLeng, gr, grEat, pred, fire, water,) {
     let matrix = [];
     for (let i = 0; i < matrixLeng; i++) {
         matrix.push([]);
@@ -73,11 +73,7 @@ function generateMatrix(matrixLeng, gr, grEat, pred, fire, water) {
     return matrix
 }
 
-matrix = generateMatrix(35, 35, 25, 32, 35, 40);
-
-
-
-
+matrix = generateMatrix(25, 35, 25, 32, 35, 40,25);
 
 
 io.sockets.emit("send matrix", matrix)
@@ -90,6 +86,7 @@ predatorArr = [];
 fireArr = [];
 waterArr = [];
 
+
 //module
 
 Grass = require("./grass")
@@ -97,6 +94,7 @@ GrassEater = require("./grassEater")
 Predator = require("./predator")
 Fire = require("./fire")
 Water = require("./water")
+
 
 
 
@@ -151,5 +149,14 @@ io.on('connection', () => {
 
  var statistics = {};
 
- 
- 
+setInterval(() => {
+ statistics.grass = grassArr.length
+ statistics.grassEater = grassEaterArr.length
+ statistics.predator = predatorArr.length
+ statistics.fire = fireArr.length
+ statistics.water = waterArr.length
+
+ fs.writeFile("statistic.json",JSON.stringify(statistics),function () {
+     console.log("send");
+ } )
+},1000)

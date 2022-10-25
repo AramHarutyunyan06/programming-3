@@ -4,7 +4,7 @@ var socket = io();
 
 var side = 30;
 function setup() {
-    createCanvas(35* side, 35 * side);
+    createCanvas(25 * side, 25 * side);
 }
 
 function nkarel(matrix) {

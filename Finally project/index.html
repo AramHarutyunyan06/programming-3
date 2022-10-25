@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game</title>
     <link rel="stylesheet" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header id="header">
@@ -15,9 +16,8 @@
         <div class="menu">
             <nav>
                 <ul>
-                    <li><a href="#header">Home</a></li>
-                    <li><a href="#matrix-bottom">Event</a></li>
-                    <li><a href="#">Statictics</a></li>
+                    <li><a href="#matrix-bottom">Game</a></li>
+                    <li><a href="#Statistics">Statictics</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,6 +32,16 @@
 <br>
 <br>
 
+<div class="container" id="Statistics">
+    <canvas id="myChart" width="400" height="400"></canvas>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
     <div id="matrix-bottom">
 
         <div class="grass bottom-child">Grass</div>
@@ -42,15 +52,18 @@
         <div class="kill bottom-child">Kill</div>
 
     </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
+  <script src="chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

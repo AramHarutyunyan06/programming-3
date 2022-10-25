@@ -76,6 +76,10 @@ module.exports = class Water extends LivingCreature{
         } else {
             this.move()
         }
+
+        //Ligghting
+
+        
         //grassEater
 
         let emptyCelss2 = this.chooseCell(2)

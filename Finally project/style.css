@@ -1,17 +1,22 @@
+*{
+    padding:0px;
+    margin: 0px;
+}
 html{
     scroll-behavior: smooth;
 }
 body{
-    height:100vh;
+    height:2000px;
     background:linear-gradient(to top,black,rgb(41, 25, 184));
 }
 #header{
     width: 100%;
-    height:50px;
+    height:100px;
     display:flex;
     justify-content: space-around;
     align-items:center;
     position: fixed;
+    background-color: black
 }
 #header .menu nav ul li{
     color: white;
@@ -35,6 +40,7 @@ body{
 #Game{
     font-size: 38px;
     cursor: pointer;
+    color:white;
 }
 span{
     color:rgb(29, 29, 214)
@@ -82,3 +88,20 @@ span{
 #matrix-bottom .bottom-child:hover{
     transform: scale(1.2);
 }
+/* canvas{
+    margin:0px auto;
+} */
+.container{
+    width:400px;
+    height:400px;
+    margin:0px auto
+}
+
+/* #myChart{
+    margin-top: 600px;
+    position: absolute;
+}
+
+#defaultCanvas0{
+    margin-bottom: 500px;
+} */
