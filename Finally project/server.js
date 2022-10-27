@@ -22,7 +22,7 @@ server.listen(3000, () => {
 
 
 
-function generateMatrix(matrixLeng, gr, grEat, pred, fire, water,) {
+function generateMatrix(matrixLeng, gr, grEat, pred, fire, water,light) {
     let matrix = [];
     for (let i = 0; i < matrixLeng; i++) {
         matrix.push([]);
@@ -70,10 +70,18 @@ function generateMatrix(matrixLeng, gr, grEat, pred, fire, water,) {
             matrix[y][x] = 5
         }
     }
+
+    for (let i = 0; i < light; i++) {
+        let x = Math.floor(Math.random() * matrixLeng)
+        let y = Math.floor(Math.random() * matrixLeng)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 6
+        }
+    }
     return matrix
 }
 
-matrix = generateMatrix(25, 35, 25, 32, 35, 40,25);
+matrix = generateMatrix(25, 35, 25, 32, 35, 40, 35);
 
 
 io.sockets.emit("send matrix", matrix)
@@ -85,6 +93,7 @@ grassEaterArr = [];
 predatorArr = [];
 fireArr = [];
 waterArr = [];
+lightingArr = [];
 
 
 //module
@@ -94,6 +103,8 @@ GrassEater = require("./grassEater")
 Predator = require("./predator")
 Fire = require("./fire")
 Water = require("./water")
+Lighting = require("./lighting")
+
 
 
 
@@ -113,6 +124,9 @@ function createObject() {
             } else if (matrix[y][x] == 4) {
                 let fire = new Fire(x, y)
                 fireArr.push(fire)
+            } else if (matrix[y][x] == 6) {
+                let lighting = new Lighting(x, y)
+                lightingArr.push(lighting)
             }
         }
     }
@@ -136,10 +150,17 @@ function game(){
     for (let i = 0; i < waterArr.length; i++) {
         waterArr[i].eat()
     }
+    for (let i = 0; i < lightingArr.length; i++) {
+        lightingArr[i].eat()
+    }
     io.sockets.emit("send matrix", matrix)
 }
 
 setInterval(game,200);
+
+/////////////////////////////Buttons////////////////////////////////
+
+
 
 
 io.on('connection', () => {
@@ -155,6 +176,8 @@ setInterval(() => {
  statistics.predator = predatorArr.length
  statistics.fire = fireArr.length
  statistics.water = waterArr.length
+ statistics.lighting = lightingArr.length
+
 
  fs.writeFile("statistic.json",JSON.stringify(statistics),function () {
      console.log("send");

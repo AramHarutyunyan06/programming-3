@@ -79,6 +79,29 @@ module.exports = class Water extends LivingCreature{
 
         //Ligghting
 
+        let emptyCelss6 = this.chooseCell(6)
+        let newCell6 = emptyCelss6[Math.floor(Math.random() * emptyCelss6.length)]
+        if (newCell6) {
+            this.energy++
+            let newX = newCell6[0]
+            let newY = newCell6[1]
+            matrix[newY][newX] = matrix[this.y][this.x]
+            matrix[this.y][this.x] = 0
+            this.x = newX
+            this.y = newY
+            if (this.energy >= 10) {
+                this.mul()
+            }
+            for (var i in lightingArr) {
+                if (newX == lightingArr[i].x && newY == lightingArr[i].y) {
+                    lightingArr.splice(i, 1);
+                    break;
+                }
+            }
+        } else {
+            this.move()
+        }
+
         
         //grassEater
 

@@ -27,16 +27,6 @@ body{
     margin-right: 10px;
     cursor: pointer;
 }
-#header .menu nav ul a{
-    text-decoration: none;
-    color:white;
-    cursor: pointer;
-}
-#header .menu{
-    display: flex;
-    justify-content: space-around;
-    align-items:center;
-}
 #Game{
     font-size: 38px;
     cursor: pointer;
@@ -85,23 +75,27 @@ span{
     background-color: rgb(0, 0, 0);
     color:white
 }
+#matrix-bottom .weather{
+    background-color: green;
+    width: 200px;
+    animation: animateColor 2s linear infinite;
+    color:white
+}
 #matrix-bottom .bottom-child:hover{
-    transform: scale(1.2);
-}
-/* canvas{
-    margin:0px auto;
-} */
-.container{
-    width:400px;
-    height:400px;
-    margin:0px auto
+    transform: scale(1.1);
 }
 
-/* #myChart{
-    margin-top: 600px;
-    position: absolute;
-}
 
-#defaultCanvas0{
-    margin-bottom: 500px;
-} */
+
+
+
+
+
+@keyframes animateColor{
+    0%{
+        filter:hue-rotate(0)
+    }
+    100%{
+        filter:hue-rotate(360deg)
+    }
+}
