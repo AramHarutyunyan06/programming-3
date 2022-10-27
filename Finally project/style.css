@@ -99,3 +99,7 @@ span{
         filter:hue-rotate(360deg)
     }
 }
+.chart{
+    width:400px;
+    height: 400px;
+}

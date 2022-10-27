@@ -1,11 +1,66 @@
 var socket = io();
-
+let myChart;
 
 
 var side = 30;
 function setup() {
     createCanvas(25 * side, 25 * side);
+    const data ={
+        labels:[
+            "Grass",
+            "Grass Eater",
+            "Predator",
+            "Fire",
+            "Water",
+            "Lighting"
+        ],
+        datasets:[{
+            label:"Chart of my game",
+            data:[25, 55, 65, 32, 20, 40, 35],
+            backgroundColor: [
+                "Green",
+                "Yellow",
+                "Red",
+                "Orange",
+                "Lightblue",
+                "Blue"
+            ],
+            hoverOffset:4
+        }]
+    };
+    const config = {
+        type: "pie",
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    display:true,
+                    labels: {
+                        color: "#fff"
+                    }
+                }
+            }
+        }
+    };
+    myChart = new Chart(
+        document.getElementById("myChart"),
+        config
+    );
+
 }
+
+
+    
+socket.on("send statistics",function(datas){
+    myChart.data.datasets[0].data = [
+        datas.grass,
+        datas.grassEater,
+        datas.predator,
+        datas.fire,
+        datas.water,
+        datas.lighting];
+        myChart.update();
+})
 
 function nkarel(matrix) {
     for (var y = 0; y < matrix.length; y++) {

@@ -81,7 +81,7 @@ function generateMatrix(matrixLeng, gr, grEat, pred, fire, water,light) {
     return matrix
 }
 
-matrix = generateMatrix(25, 35, 25, 32, 35, 40, 35);
+matrix = generateMatrix(15, 55, 65, 32, 20, 40, 35);
 
 
 io.sockets.emit("send matrix", matrix)
@@ -163,8 +163,12 @@ setInterval(game,200);
 
 
 
+
+
+/////////////////////////////Buttons End///////////////////////////////////////
+
 io.on('connection', () => {
-    createObject(matrix)
+    createObject(matrix);
  })
 
 
@@ -180,6 +184,6 @@ setInterval(() => {
 
 
  fs.writeFile("statistic.json",JSON.stringify(statistics),function () {
-     console.log("send");
+     io.sockets.emit("send statistics", statistics)
  } )
 },1000)
