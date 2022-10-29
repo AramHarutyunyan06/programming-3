@@ -212,7 +212,16 @@ function plusGrass(){
 
 /////GrassEater++++
 function plusGrassEater(){
-        
+    for(var i = 0;i < 15;i++){
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if(matrix[y][x] == 0){
+            matrix[y][x] = 1;
+            var grEat = new GrassEater(x,y)
+            grassEaterArr.push(grEat)
+        }
+    }
+    io.sockets.emit("send matrix", matrix)
 }
 
 /////predator+++
@@ -242,6 +251,7 @@ io.on('connection', (socket) => {
     socket.on("Change",ChangeWeather);
     socket.on("kill",killAll);
     socket.on("plusGrass",plusGrass)
+    socket.on("plusGrassEater",plusGrassEater)
  })
 
 
