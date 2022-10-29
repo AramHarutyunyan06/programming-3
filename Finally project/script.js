@@ -1,10 +1,10 @@
 var socket = io();
 let myChart;
 
-
+var weather = "winter"
 var side = 30;
 function setup() {
-    createCanvas(25 * side, 25 * side);
+    createCanvas(50 * side, 50 * side);
     const data ={
         labels:[
             "Grass",
@@ -49,7 +49,9 @@ function setup() {
 
 }
 
-
+socket.on("chWeather",function(dataChangeWeather){
+    weather = dataChangeWeather
+})
     
 socket.on("send statistics",function(datas){
     myChart.data.datasets[0].data = [
@@ -67,7 +69,15 @@ function nkarel(matrix) {
         for (var x = 0; x < matrix[y].length; x++) {
 
             if (matrix[y][x] == 1) {
-                fill("green");
+                if(weather == "spring"){
+                    fill("green");
+                } else if(weather == "summer"){
+                    fill("pink");
+                } else if(weather == "autumn"){
+                    fill("rgb(255,110,0)");
+                } else if(weather == "winter"){
+                    fill("white");
+                }
             } else if (matrix[y][x] == 0) {
                 fill("#acacac");
             } else if (matrix[y][x] == 2) {
@@ -78,6 +88,8 @@ function nkarel(matrix) {
                 fill("orange");
             } else if (matrix[y][x] == 5) {
                 fill("lightblue");
+            } else if (matrix[y][x] == 6) {
+                fill("blue");
             }
             rect(x * side, y * side, side, side);
         }
@@ -86,3 +98,19 @@ function nkarel(matrix) {
 }
 
 socket.on("send matrix",nkarel)
+
+
+
+
+function ChWeathers(){
+    socket.emit("Change")
+}
+function kill(){
+    socket.emit("kill")
+}
+function GrassP(){
+    socket.emit("plusGrass")
+}
+function GrassEaterP(){
+    socket.emit("plusGrassEater")
+}

@@ -81,7 +81,7 @@ function generateMatrix(matrixLeng, gr, grEat, pred, fire, water,light) {
     return matrix
 }
 
-matrix = generateMatrix(15, 55, 65, 32, 20, 40, 35);
+matrix = generateMatrix(50, 55, 65, 32, 20, 40, 35);
 
 
 io.sockets.emit("send matrix", matrix)
@@ -157,18 +157,91 @@ function game(){
 }
 
 setInterval(game,200);
+/////////////////////////////Weather////////////////////////////////
 
+let weathers = ["spring","summer","autumn","winter"]
+let i = weathers.length - 1
+
+function chWeather(){
+    var weath = weathers[i--];
+    if(i < 0){
+       i = 3
+    }
+    io.sockets.emit("chWeather",weath)
+}
+setInterval(chWeather,3000);
+
+
+
+function ChangeWeather(){
+    chWeather();
+}
+
+/////////////////////////////Weather End////////////////////////////
 /////////////////////////////Buttons////////////////////////////////
 
+////KILLALL
+function killAll(){
+    grassArr = [];
+    grassEaterArr = [];
+    predatorArr = [];
+    fireArr = [];
+    waterArr = [];
+    lightingArr = [];
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+            matrix[y][x] = 0
+        }
+    }
+}
 
+/////Grass++++
 
+function plusGrass(){
+    for(var i = 0;i < 10;i++){
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if(matrix[y][x] == 0){
+            matrix[y][x] = 1;
+            var Gr = new Grass(x,y)
+            grassArr.push(Gr)
+        }
+    }
+    io.sockets.emit("send matrix", matrix)
+}
 
+/////GrassEater++++
+function plusGrassEater(){
+        
+}
 
+/////predator+++
+function plusPredator(){
 
-/////////////////////////////Buttons End///////////////////////////////////////
+}
 
-io.on('connection', () => {
+/////Fire+++++
+function plusFire(){
+    
+}
+
+/////Water+++++
+function plusWater(){
+    
+}
+
+/////Lighting+++++
+function pluslighting(){
+    
+}
+
+/////////////////////////////Buttons End////////////////////////////
+
+io.on('connection', (socket) => {
     createObject(matrix);
+    socket.on("Change",ChangeWeather);
+    socket.on("kill",killAll);
+    socket.on("plusGrass",plusGrass)
  })
 
 

@@ -126,9 +126,9 @@ module.exports = class Water extends LivingCreature{
 
     die() {
         matrix[this.y][this.x] = 0
-        for (var i in fireArr) {
-            if (this.x == fireArr[i].x && this.y == fireArr[i].y) {
-                fireArr.splice(i, 1);
+        for (var i in waterArr) {
+            if (this.x == waterArr[i].x && this.y == waterArr[i].y) {
+                waterArr.splice(i, 1);
                 break;
             }
         }

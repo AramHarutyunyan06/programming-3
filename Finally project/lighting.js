@@ -106,9 +106,9 @@ module.exports = class Lighting extends LivingCreature{
     }
     die() {
         matrix[this.y][this.x] = 0
-        for (var i in fireArr) {
-            if (this.x == fireArr[i].x && this.y == fireArr[i].y) {
-                fireArr.splice(i, 1);
+        for (var i in lightingArr) {
+            if (this.x == lightingArr[i].x && this.y == lightingArr[i].y) {
+                lightingArr.splice(i, 1);
                 break;
             }
         }
