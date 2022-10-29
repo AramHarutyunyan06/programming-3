@@ -165,19 +165,19 @@ setInterval(game,200);
 let weathers = ["spring","summer","autumn","winter"]
 let i = weathers.length - 1
 
-function chWeather(){
+function ChWeather(){
     var weath = weathers[i--];
     if(i < 0){
        i = 3
     }
     io.sockets.emit("chWeather",weath)
 }
-setInterval(chWeather,3000);
+setInterval(ChWeather,3000);
 
 
 
 function ChangeWeather(){
-    chWeather();
+    ChWeather();
 }
 
 /////////////////////////////Weather End////////////////////////////

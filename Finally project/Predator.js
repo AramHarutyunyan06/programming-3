@@ -2,7 +2,7 @@ let LivingCreature = require("./LivingCreature")
 module.exports = class Predator extends LivingCreature{
     constructor(x, y) {
         super(x,y)
-        this.energy = 50;
+        this.energy = 30;
 
     }
     getNewCoordinates() {

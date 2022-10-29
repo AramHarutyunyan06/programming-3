@@ -27,6 +27,25 @@ body{
     margin-right: 10px;
     cursor: pointer;
 }
+#header .menu nav ul a{
+    text-decoration: none;
+    color:white;
+    cursor: pointer;
+}
+#header .menu nav ul li{
+    color: white;
+    font-family: serif;
+    list-style-type: none;
+    font-size: 24px;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+#header .menu{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+}
 #Game{
     font-size: 38px;
     cursor: pointer;
@@ -91,6 +110,154 @@ span{
     width:400px;
     height: 400px;
 }
+
+.aboutAll{
+    width:90%;
+    margin:0px auto;
+}
+.aboutAll .aboutGrass{
+    width:100%;
+    height:120px;
+}
+.aboutAll .aboutGrass .titleGrass{
+    width:100%;
+    height:40%;
+    justify-content:center;
+    align-items: center;
+    display: flex;
+}
+.aboutAll .aboutGrass .titleGrass > h1{
+    font-size: 38px;
+    color:green;
+}
+.aboutAll .aboutGrass .tableGrass{
+    width: 100%;
+    height:60%;
+}
+table,tr,td{
+    border:1px solid black;
+    width:100px
+}
+.tableGrass{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tableGrass table{
+    width: 500px;
+}
+
+
+
+.aboutAll .aboutGrassEater{
+    width:100%;
+    height:120px;
+}
+.aboutAll .aboutGrassEater .titleGrassEater{
+    width:100%;
+    height:40%;
+    justify-content:center;
+    align-items: center;
+    display: flex;
+}
+.aboutAll .aboutGrassEater .titleGrassEater > h1{
+    font-size: 38px;
+    color:yellow;
+}
+.aboutAll .aboutGrassEater .tableGrassEater{
+    width: 100%;
+    height:60%;
+}
+table,tr,td{
+    border:1px solid black;
+    width:100px
+}
+.tableGrassEater{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tableGrassEater table{
+    width: 500px;
+}
+.grass-eater{
+    width:100%;
+    display:flex;
+    justify-content: center;
+}
+
+
+
+.aboutAll .aboutPredator{
+    width:100%;
+    height:120px;
+}
+.aboutAll .aboutPredator .titlePredator{
+    width:100%;
+    height:40%;
+    justify-content:center;
+    align-items: center;
+    display: flex;
+}
+.aboutAll .aboutPredator .titlePredator > h1{
+    font-size: 38px;
+    color:red;
+}
+.aboutAll .aboutPredator .tablePredator{
+    width: 100%;
+    height:60%;
+}
+table,tr,td{
+    border:1px solid black;
+    width:100px
+}
+.tablePredator{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tablePredator table{
+    width: 500px;
+}
+.predator-fire{
+    width:100%;
+    display:flex;
+    justify-content: center;
+}
+
+
+.aboutAll .aboutFire{
+    width:100%;
+    height:120px;
+}
+.aboutAll .aboutFire .titleFire{
+    width:100%;
+    height:40%;
+    justify-content:center;
+    align-items: center;
+    display: flex;
+}
+.aboutAll .aboutFire .titleFire > h1{
+    font-size: 38px;
+    color:orange;
+}
+.aboutAll .aboutFire .tableFire{
+    width: 100%;
+    height:60%;
+}
+table,tr,td{
+    border:1px solid black;
+    width:100px
+}
+.tableFire{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tableFire table{
+    width: 500px;
+}
+
 
 @keyframes animateColor{
     0%{
