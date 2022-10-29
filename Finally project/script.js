@@ -4,7 +4,7 @@ let myChart;
 var weather = "winter"
 var side = 30;
 function setup() {
-    createCanvas(50 * side, 50 * side);
+    createCanvas(40 * side, 40 * side);
     const data ={
         labels:[
             "Grass",
@@ -109,8 +109,17 @@ function kill(){
     socket.emit("kill")
 }
 function GrassP(){
-    socket.emit("plusGrass")
+    socket.emit("plusGrass1")
 }
 function GrassEaterP(){
-    socket.emit("plusGrassEater")
+    socket.emit("plusGrassEater1")
+}
+function PredatorP(){
+    socket.emit("plusPredator1")
+}
+function FireP(){
+    socket.emit("plusFire1")
+}
+function LightingP(){
+    socket.emit("plusLighting1")
 }

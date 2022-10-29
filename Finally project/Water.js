@@ -38,9 +38,6 @@ module.exports = class Water extends LivingCreature{
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
-            if (this.energy >= 10) {
-                this.mul()
-            }
             for (var i in predatorArr) {
                 if (newX == predatorArr[i].x && newY == predatorArr[i].y) {
                     predatorArr.splice(i, 1);
@@ -48,8 +45,6 @@ module.exports = class Water extends LivingCreature{
                 }
             }
 
-        } else {
-            this.move()
         }
 
         //Fire
@@ -64,17 +59,12 @@ module.exports = class Water extends LivingCreature{
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
-            if (this.energy >= 10) {
-                this.mul()
-            }
             for (var i in fireArr) {
                 if (newX == fireArr[i].x && newY == fireArr[i].y) {
                     fireArr.splice(i, 1);
                     break;
                 }
             }
-        } else {
-            this.move()
         }
 
         //Ligghting
@@ -89,17 +79,12 @@ module.exports = class Water extends LivingCreature{
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
-            if (this.energy >= 10) {
-                this.mul()
-            }
             for (var i in lightingArr) {
                 if (newX == lightingArr[i].x && newY == lightingArr[i].y) {
                     lightingArr.splice(i, 1);
                     break;
                 }
             }
-        } else {
-            this.move()
         }
 
         
@@ -115,12 +100,6 @@ module.exports = class Water extends LivingCreature{
             matrix[this.y][this.x] = 0
             this.x = newX
             this.y = newY
-            if (this.energy >= 10) {
-                this.mul()
-            }
-
-        } else {
-            this.move()
         }
     }
 

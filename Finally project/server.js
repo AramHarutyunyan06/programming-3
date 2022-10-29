@@ -81,7 +81,7 @@ function generateMatrix(matrixLeng, gr, grEat, pred, fire, water,light) {
     return matrix
 }
 
-matrix = generateMatrix(50, 55, 65, 32, 20, 40, 35);
+matrix = generateMatrix(40, 55, 65, 32, 20, 40, 35);
 
 
 io.sockets.emit("send matrix", matrix)
@@ -124,6 +124,9 @@ function createObject() {
             } else if (matrix[y][x] == 4) {
                 let fire = new Fire(x, y)
                 fireArr.push(fire)
+            } else if (matrix[y][x] == 5) {
+                let water = new Water(x, y)
+                waterArr.push(water)
             } else if (matrix[y][x] == 6) {
                 let lighting = new Lighting(x, y)
                 lightingArr.push(lighting)
@@ -215,10 +218,10 @@ function plusGrassEater(){
     for(var i = 0;i < 15;i++){
         var x = Math.floor(Math.random() * matrix[0].length)
         var y = Math.floor(Math.random() * matrix.length)
-        if(matrix[y][x] == 0){
-            matrix[y][x] = 1;
-            var grEat = new GrassEater(x,y)
-            grassEaterArr.push(grEat)
+        if(matrix[y][x] == 0 || matrix[y][x] == 1){
+            matrix[y][x] = 2;
+            let grEat = new GrassEater(x,y);
+            grassEaterArr.push(grEat);
         }
     }
     io.sockets.emit("send matrix", matrix)
@@ -226,32 +229,59 @@ function plusGrassEater(){
 
 /////predator+++
 function plusPredator(){
-
+    for(var i = 0;i < 20;i++){
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if(matrix[y][x] == 0 || matrix[y][x] == 2){
+            matrix[y][x] = 3;
+            let pred = new Predator(x,y);
+            predatorArr.push(pred);
+        }
+    }
+    io.sockets.emit("send matrix", matrix)
 }
 
 /////Fire+++++
 function plusFire(){
-    
+    for(var i = 0;i < 5;i++){
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if(matrix[y][x] == 0 || matrix[y][x] == 3){
+            matrix[y][x] = 4;
+            let fire = new Fire(x,y);
+            fireArr.push(fire);
+        }
+    }
+    io.sockets.emit("send matrix", matrix)
 }
 
-/////Water+++++
-function plusWater(){
-    
-}
+
 
 /////Lighting+++++
-function pluslighting(){
-    
+function plusLight(){
+    for(var i = 0;i < 25;i++){
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if(matrix[y][x] == 0 || matrix[y][x] == 1 || matrix[y][x] == 3){
+            matrix[y][x] = 6;
+            let lighting = new Lighting(x,y);
+            lightingArr.push(lighting);
+        }
+    }
+    io.sockets.emit("send matrix", matrix)
 }
 
 /////////////////////////////Buttons End////////////////////////////
 
 io.on('connection', (socket) => {
     createObject(matrix);
-    socket.on("Change",ChangeWeather);
-    socket.on("kill",killAll);
-    socket.on("plusGrass",plusGrass)
-    socket.on("plusGrassEater",plusGrassEater)
+    socket.on("Change", ChangeWeather);
+    socket.on("kill", killAll);
+    socket.on("plusGrass1", plusGrass);
+    socket.on("plusGrassEater1", plusGrassEater);
+    socket.on("plusPredator1", plusPredator);
+    socket.on("plusFire1", plusFire);
+    socket.on("plusLighting1", plusLight)
  })
 
 
