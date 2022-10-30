@@ -81,7 +81,7 @@ function generateMatrix(matrixLeng, gr, grEat, pred, fire, water,light) {
     return matrix
 }
 
-matrix = generateMatrix(40, 55, 65, 32, 20, 40, 35);
+matrix = generateMatrix(25, 55, 65, 32, 20, 40, 35);
 
 
 io.sockets.emit("send matrix", matrix)
@@ -255,7 +255,19 @@ function plusFire(){
     io.sockets.emit("send matrix", matrix)
 }
 
-
+///////Water++++
+function plusWater(){
+    for(var i = 0;i < 8;i++){
+        var x = Math.floor(Math.random() * matrix[0].length)
+        var y = Math.floor(Math.random() * matrix.length)
+        if(matrix[y][x] == 0){
+            matrix[y][x] = 5;
+            let water = new Water(x,y);
+            waterArr.push(water);
+        }
+    }
+    io.sockets.emit("send matrix", matrix)
+}
 
 /////Lighting+++++
 function plusLight(){
@@ -282,6 +294,7 @@ io.on('connection', (socket) => {
     socket.on("plusPredator1", plusPredator);
     socket.on("plusFire1", plusFire);
     socket.on("plusLighting1", plusLight)
+    socket.on("plusWater1", plusWater)
  })
 
 

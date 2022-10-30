@@ -4,7 +4,7 @@ let myChart;
 var weather = "winter"
 var side = 30;
 function setup() {
-    createCanvas(40 * side, 40 * side);
+    createCanvas(25 * side, 25 * side);
     const data ={
         labels:[
             "Grass",
@@ -74,7 +74,7 @@ function nkarel(matrix) {
                 } else if(weather == "summer"){
                     fill("pink");
                 } else if(weather == "autumn"){
-                    fill("rgb(255,110,0)");
+                    fill("rgb(255,50,0)");
                 } else if(weather == "winter"){
                     fill("white");
                 }
@@ -119,6 +119,9 @@ function PredatorP(){
 }
 function FireP(){
     socket.emit("plusFire1")
+}
+function WaterP(){
+    socket.emit("plusWater1")
 }
 function LightingP(){
     socket.emit("plusLighting1")

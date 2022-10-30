@@ -2,12 +2,11 @@
     padding:0px;
     margin: 0px;
 }
-html{
-    scroll-behavior: smooth;
-}
 body{
-    height:2000px;
+    height:1800px;
     background:linear-gradient(to top,black,rgb(41, 25, 184));
+    justify-content: center;
+    align-items: center;
 }
 #header{
     width: 100%;
@@ -54,7 +53,6 @@ body{
 span{
     color:rgb(29, 29, 214)
 }
-
 #matrix-bottom{
     margin-top: 150px;
     width:80%;
@@ -87,6 +85,9 @@ span{
 #matrix-bottom .fire{
     background-color: orange;
 }
+#matrix-bottom .water{
+    background-color: lightblue;
+}
 #matrix-bottom .lighting{
     background-color: blue;
 }
@@ -109,11 +110,20 @@ span{
 .chart{
     width:400px;
     height: 400px;
+    margin: 0px auto;
 }
 
 .aboutAll{
     width:90%;
     margin:0px auto;
+}
+.aboutButtons{
+    width:90%;
+    margin:0px auto;
+}
+.aboutButtons > p{
+    color:white;
+    font-size: 22px;
 }
 .aboutAll .aboutGrass{
     width:100%;
@@ -256,6 +266,81 @@ table,tr,td{
 }
 .tableFire table{
     width: 500px;
+}
+
+
+
+.aboutAll .aboutWater{
+    width:100%;
+    height:120px;
+}
+.aboutAll .aboutWater .titleWater{
+    width:100%;
+    height:40%;
+    justify-content:center;
+    align-items: center;
+    display: flex;
+}
+.aboutAll .aboutWater .titleWater > h1{
+    font-size: 38px;
+    color:lightblue;
+}
+.aboutWater .aboutWater .tableWater{
+    width: 100%;
+    height:60%;
+}
+table,tr,td{
+    border:1px solid black;
+    width:100px
+}
+.tableWater{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tableWater table{
+    width: 500px;
+}
+
+
+
+.aboutAll .aboutLighting{
+    width:100%;
+    height:120px;
+}
+.aboutAll .aboutLighting .titleLighting{
+    width:100%;
+    height:40%;
+    justify-content:center;
+    align-items: center;
+    display: flex;
+}
+.aboutAll .aboutLighting .titleLighting > h1{
+    font-size: 38px;
+    color:lightblue;
+}
+.aboutLighting .aboutLighting .tableLighting{
+    width: 100%;
+    height:60%;
+}
+table,tr,td{
+    border:1px solid black;
+    width:100px
+}
+.tableLighting{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tableLighting table{
+    width: 500px;
+}
+
+
+.water-lighting{
+    width:100%;
+    display:flex;
+    justify-content: center;
 }
 
 
